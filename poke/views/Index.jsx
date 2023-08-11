@@ -19,7 +19,7 @@ function Index({pokemon}){
                 margin:"1rem",
                 padding:"1rem",
                 }}>
-            <a href={`/${poke.name}`} style={{
+            <a href={`/pokemon/${i}`} style={{
                 color:"darkblue", 
                 fontFamily:"monospace",
                 textDecoration:"none",
