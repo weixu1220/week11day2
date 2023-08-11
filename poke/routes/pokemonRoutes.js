@@ -4,8 +4,6 @@ const router = express.Router();
 
 router.get('/',pokemonController.index);
 
-
-
 router.get('/new', pokemonController.new);
 
 router.post('/', pokemonController.create);

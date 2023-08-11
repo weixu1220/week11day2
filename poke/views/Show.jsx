@@ -1,6 +1,6 @@
 import React from 'react'
 function Show({poke}){
-    let {name, img, _id}= poke
+    let {name, img}= poke
     return(
         <div style={{textAlign:"center"}}>
             <h1 style={{fontFamily:"monospace",fontSize:"4rem"}}>Gotta Catch 'Em All</h1>

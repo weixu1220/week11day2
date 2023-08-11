@@ -10,7 +10,6 @@ const pokeSchema = new Schema({
         type:String,
         required:true
     }
-
 })
 const Pokemon = mongoose.model('pokemon',pokeSchema)
 module.exports = Pokemon

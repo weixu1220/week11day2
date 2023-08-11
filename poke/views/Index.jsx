@@ -1,8 +1,6 @@
 import React from 'react';
 
 function Index({pokemon}){
-    console.log("pokemon~~~~~~~~~~~~~~~")
-    console.log(pokemon)
     if (pokemon){
         return(
             <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
