@@ -29,6 +29,8 @@ router.post('/', flightController.create)
 // "edit" route
 router.get('/:id/edit', flightController.edit)
 
+
+router.put('/update/:id',flightController.updateDestination)
 // "show" route      
 router.get('/:id', flightController.show)
 

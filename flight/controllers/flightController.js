@@ -123,3 +123,16 @@ module.exports.clear = async (req, res) => {
 
     res.redirect('/flights')
 }
+module.exports.updateDestination = async(req,res) =>{
+    console.log('/PUT ')
+try{
+    
+    let newFlight = await Flight.findById(req.params.id)
+    newFlight.destinations.push({ airport: req.body.arrivalAirport, arrival: req.body.arrival})
+    await Flight.findByIdAndUpdate(req.params.id, newFlight)
+    
+    res.redirect(`/flights/${req.params.id}`) 
+}catch(err){
+    console.log(err.message)
+}
+}
