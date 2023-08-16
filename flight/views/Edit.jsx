@@ -5,41 +5,45 @@ function Edit({ flight }) {
     let airlines = ['American', 'Southwest', 'United']
     let airports = ['AUS', 'DAL', 'LAX', 'SAN', 'SEA']
     let dt = depart
-    let at = destinations[0].arrival
+    let myStyle = {width:'fit-content', fontSize:'1.5rem', margin:'1rem', padding:'5px'}
     return (
-        <div>
-            <h1>Edit</h1>
+        <div style={{ textAlign: 'center' }}>
             <form action={`/flights/${_id}?_method=PUT`} method='POST'>
-            <label htmlFor='airport-select'>Airport:</label>
-                <select type='text' id='airport-select' name='departAirport'>
-                    {airports.map((airport, i) => (<option key={i} value={airport} defaultValue ={airport}required>{airport}</option>))}
+                <div style={{fontSize:'2rem', fontWeight:'bold', padding:'5px'}}>
+                <label style={{margin:'1rem', padding:'5px'}} htmlFor='airline-select'>Airline:</label>
+                <select style={{margin:'1rem', fontSize:'1.5rem', padding:'5px'}} type='text' id='airline-select' name='airline' defaultValue={airline}>
+                    {airlines.map((airline, i) => (<option key={i} required>{airline}</option>))}
                 </select>
-                <br />
-                <br />
-                <label htmlFor='airline-select'>Airline:</label><br />
-                <select type='text' id='airline-select' name='airline' defaultValue={airline}>
-                    {airlines.map((airline, i) => (<option key={i}  required>{airline}</option>))}
-                </select><br /><br /><br />
-
-                <label htmlFor='flightNo'>Flight NO.:</label><br />
-                <input type='number' id='flightNo' name='flightNo' min="10" max="9999" defaultValue={flightNo}></input><br /><br />
-
-                <label htmlFor='depart'>Departure Date:</label>
-                <input type='datetime-local' id='depart' name='depart' defaultValue={dt.toISOString().slice(0,19)}></input><br /><br /><br />
-
-                <label htmlFor='airport'>Airport:</label><br />
-                <select type='text' id='airport-select' name='arrivalAirport'>
-                    {airports.map((airport, i) => (<option key={i} value={airport} defaultValue={destinations[0].airport}required>{airport}</option>))}
+                <label style={{margin:'1rem', padding:'5px'}} htmlFor='flightNo'>Flight NO.:</label>
+                <input style={{fontSize:'1.5rem', margin:'1rem', padding:'5px'}} type='number' id='flightNo' name='flightNo' min="10" max="9999" defaultValue={flightNo}></input>
+                </div>
+                <div>
+                    <h2 style={{backgroundColor:'grey', padding:'5px'}}>Departure:</h2>
+                <label style={myStyle} htmlFor='airport-select'>Airport:</label>
+                <select style={myStyle} type='text' id='airport-select' name='departAirport'>
+                    {airports.map((airport, i) => (<option key={i} value={airport} defaultValue={airport} required>{airport}</option>))}
                 </select>
-                <br />
-                <br />
 
-                <label htmlFor='arrival'>Departure Date:</label>
-                <input type='datetime-local' id='arrival' name='arrival' defaultValue={at.toISOString().slice(0,19)}></input><br /><br /><br />
-
-                <button>Submit</button>
-            </form><br />
-            <a href={`/flights/${_id}`}><button>Back</button></a>
+                <label style={myStyle} htmlFor='depart'>Departure Date:</label>
+                <input style={myStyle} type='datetime-local' id='depart' name='depart' defaultValue={dt.toISOString().slice(0, 19)}></input>
+                </div>
+                <div>
+                <h2 style={{backgroundColor:'grey', padding:'5px'}}>Destinations:</h2>
+                {destinations.map((destination,i)=>(
+                    <div key={i} style={{margin:'1rem'}}>
+                        <label style={myStyle} htmlFor='airport'>Airport:</label>
+                    <select style={myStyle} type='text' id='airport-select' name='arrivalAirport'>
+                        {airports.map((airport, i) => (<option key={i} value={airport} defaultValue={destination.airport} required>{airport}</option>))}
+                    </select>
+                    <label style={myStyle} htmlFor='arrival'>Arrival Date:</label>
+                    <input style={myStyle} type='datetime-local' id='arrival' name='arrival' defaultValue={destination.arrival.toISOString().slice(0, 19)}></input>
+                    </div>
+                    )
+                )}
+                </div>
+                <button style={{ backgroundColor:'blue', fontSize:'2rem', color: 'white', padding:'1rem', border:'none', borderRadius:'1rem', }}>Submit</button>
+            </form>
+            <a href={`/flights/${_id}`}><button style={{ backgroundColor:'blue', fontSize:'2rem', color: 'white', padding:'1rem', border:'none', borderRadius:'1rem',margin:'1rem' }}>Back</button></a>
         </div>
     )
 }
